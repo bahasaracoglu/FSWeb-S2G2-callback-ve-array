@@ -114,7 +114,7 @@ function YillaraGoreKazananlar(data, cbFinaller, cbYillar, cbKazananlar) {
 	let kazananYillar = cbYillar(data, cbFinaller);
 	let kazananTakımlar = cbKazananlar(data, cbFinaller);
 
-	const yillikFinalSonuc = kazananYillar.map((x,i) => `${x} yılında, ${kazananTakımlar[i]} dünya kupasını kazandı!` )
+	const yillikFinalSonuc = kazananYillar.map((x, i) => `${x} yılında, ${kazananTakımlar[i]} dünya kupasını kazandı!`)
 
 	return yillikFinalSonuc
 
@@ -136,13 +136,16 @@ console.log("Görev-5__", YillaraGoreKazananlar(fifaData, Finaller, Yillar, Kaza
 	
 */
 
-function OrtalamaGolSayisi(/* kodlar buraya */) {
+function OrtalamaGolSayisi(cbFinaller) {
+	let toplamGolSayisi = cbFinaller.map(a => (a['Home Team Goals'] + a['Away Team Goals']))
 
-	/* kodlar buraya */
-
+	const OrtalamaGolSayilari = toplamGolSayisi.reduce((a, b) => a + b, 0) / cbFinaller.length
+	let fixedSayi = OrtalamaGolSayilari.toFixed(2)
+	return fixedSayi
 }
 
 
+console.log("Görev-6__", OrtalamaGolSayisi(Finaller(fifaData)));
 
 /// EKSTRA ÇALIŞMALAR ///
 
