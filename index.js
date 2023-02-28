@@ -6,21 +6,41 @@ const { fifaData } = require('./fifa.js')
 	
 	💡 İPUCU: Öncelikle datayı filtrelemek isteyebilirsiniz */
 
-	let dünyaKupası2014 = fifaData.filter (d => d.year = 2014);
+const dünyaKupası2014 = fifaData.filter(d => d.Year === 2014);
 
-console.log(dünyaKupası2014);
+console.log("Görev-1__", dünyaKupası2014)
 
 //(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
 
+const finalMaci = dünyaKupası2014.filter(d => d.Stage === "Final")
+const finalEvSahibiAdi = finalMaci[0]['Home Team Name']
+
+console.log("Görev-1a__", finalEvSahibiAdi)
+
 //(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
+
+const finalDeplasmanAdi = finalMaci[0]['Away Team Name'];
+
+console.log("Görev-1b__", finalDeplasmanAdi)
 
 //(c) 2014 Dünya kupası finali Ev sahibi takım golleri (dizide "Home Team Goals" anahtarı)
 
+const finalEvSahibiGol = finalMaci[0]['Home Team Goals']
+
+console.log("Görev-1c__", finalEvSahibiGol);
+
 //(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
+
+const finalDeplasmanGol = finalMaci[0]['Away Team Goals']
+
+console.log("Görev-1d__", finalDeplasmanGol);
+
 
 //(e) 2014 Dünya kupası finali kazananı*/
 
+const finalSonuc = finalMaci[0]['Win conditions']
 
+console.log("Görev-1e__", finalSonuc);
 
 
 /*  Görev 2: 
@@ -31,11 +51,14 @@ console.log(dünyaKupası2014);
 	💡 İPUCU - verilen data içindeki nesnelerin(objects) "Stage" anahtarına bakmalısınız
 */
 
-function Finaller(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
+function Finaller(data) {
+
+	const finalMaclari = data.filter(d => d.Stage === "Final")
+	return finalMaclari
+
 }
 
+console.log("Görev-2__", Finaller(fifaData));
 
 
 /*  Görev 3: 
@@ -45,11 +68,13 @@ function Finaller(/* kodlar buraya */) {
 	3. Finaller data setindeki tüm yılları içeren "years" adındaki diziyi(array) döndürecek
 	*/
 
-function Yillar(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
+function Yillar(data, cbFinaller) {
+
+	const yillarDizisi = cbFinaller(data).map(x => x.Year);
+	return yillarDizisi
 }
 
+console.log("Görev-3__", Yillar(fifaData, Finaller));
 
 /*  Görev 4: 
 	Bir higher-order fonksiyonunu olan Kazananlar isimli fonksiyona aşağıdakileri uygulayın:  
@@ -57,12 +82,12 @@ function Yillar(/* kodlar buraya */) {
 	2. Görev 2'de yazdığınız Finaller fonksiyonunu, geriçağırım(callback) olarak fonksiyonun ikinci parametresi olarak alacak
 	3. Her final maçının kazananını (evsahibi ya da deplasman) belirleyecek
 	💡 İPUCU: Beraberlikler(ties) için şimdilik endişelenmeyin (Detaylı bilgi için README dosyasına bakabilirsiniz.)
-	4. Tüm kazanan ülkelerin isimlerini içeren `kazananlar` adında bir dizi(array) döndürecek(return)  */ 
+	4. Tüm kazanan ülkelerin isimlerini içeren `kazananlar` adında bir dizi(array) döndürecek(return)  */
 
 function Kazananlar(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+
+	/* kodlar buraya */
+
 }
 
 
@@ -79,8 +104,8 @@ function Kazananlar(/* kodlar buraya */) {
 */
 
 function YillaraGoreKazananlar(/* kodlar buraya */) {
-	
-/* kodlar buraya */
+
+	/* kodlar buraya */
 
 }
 
@@ -100,9 +125,9 @@ function YillaraGoreKazananlar(/* kodlar buraya */) {
 */
 
 function OrtalamaGolSayisi(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+
+	/* kodlar buraya */
+
 }
 
 
@@ -116,9 +141,9 @@ function OrtalamaGolSayisi(/* kodlar buraya */) {
 İpucu: `.reduce` Kullanın*/
 
 function UlkelerinKazanmaSayilari(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+
+	/* kodlar buraya */
+
 }
 
 
@@ -127,9 +152,9 @@ function UlkelerinKazanmaSayilari(/* kodlar buraya */) {
 EnCokGolAtan() isminde bir fonksiyon yazın, `data` yı parametre olarak alsın ve Dünya kupası finallerinde en çok gol atan takımı döndürsün */
 
 function EnCokGolAtan(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+
+	/* kodlar buraya */
+
 }
 
 
@@ -137,9 +162,9 @@ function EnCokGolAtan(/* kodlar buraya */) {
 EnKotuDefans() adında bir fonksiyon yazın, `data` yı parametre olarak alsın ve Dünya kupasında finallerinde en çok golü yiyen takımı döndürsün*/
 
 function EnKotuDefans(/* kodlar buraya */) {
-	
-    /* kodlar buraya */
-	
+
+	/* kodlar buraya */
+
 }
 
 
@@ -147,16 +172,16 @@ function EnKotuDefans(/* kodlar buraya */) {
 
 
 /* Bu satırın aşağısındaki kodları lütfen değiştirmeyin */
-function sa(){
-    console.log('Kodlar çalışıyor');
-    return 'as';
+function sa() {
+	console.log('Kodlar çalışıyor');
+	return 'as';
 }
 sa();
 module.exports = {
-    sa,
-    Finaller,
-    Yillar,
-    Kazananlar,
-    YillaraGoreKazananlar,
-    OrtalamaGolSayisi
+	sa,
+	Finaller,
+	Yillar,
+	Kazananlar,
+	YillaraGoreKazananlar,
+	OrtalamaGolSayisi
 }
