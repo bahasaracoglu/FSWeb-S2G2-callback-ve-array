@@ -6,6 +6,10 @@ const { fifaData } = require('./fifa.js')
 	
 	💡 İPUCU: Öncelikle datayı filtrelemek isteyebilirsiniz */
 
+	let dünyaKupası2014 = fifaData.filter (d => d.year = 2014);
+
+console.log(dünyaKupası2014);
+
 //(a) 2014 Dünya kupası Finali Evsahibi takım ismi (dizide "Home Team Name" anahtarı)
 
 //(b) 2014 Dünya kupası Finali Deplasman takım ismi  (dizide "Away Team Name" anahtarı)
@@ -15,6 +19,8 @@ const { fifaData } = require('./fifa.js')
 //(d)2014 Dünya kupası finali Deplasman takım golleri  (dizide "Away Team Goals" anahtarı)
 
 //(e) 2014 Dünya kupası finali kazananı*/
+
+
 
 
 /*  Görev 2: 
