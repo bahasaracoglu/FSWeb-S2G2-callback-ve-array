@@ -88,9 +88,9 @@ function Kazananlar(data, cbFinaller) {
 
 	let finallerTest = cbFinaller(data);
 
-	const kazananlarDizisi = finallerTest.map(x => x['Home Team Goals'] > x['Away Team Goals'] ? x['Home Team Name'] : x['Away Team Name'] )
-	
-	
+	const kazananlarDizisi = finallerTest.map(x => x['Home Team Goals'] > x['Away Team Goals'] ? x['Home Team Name'] : x['Away Team Name'])
+
+
 
 	return kazananlarDizisi
 
@@ -111,10 +111,16 @@ console.log("Görev-4__", Kazananlar(fifaData, Finaller));
 
 function YillaraGoreKazananlar(data, cbFinaller, cbYillar, cbKazananlar) {
 
-	/* kodlar buraya */
+	let kazananYillar = cbYillar(data, cbFinaller);
+	let kazananTakımlar = cbKazananlar(data, cbFinaller);
+
+	const yillikFinalSonuc = kazananYillar.map((x,i) => `${x} yılında, ${kazananTakımlar[i]} dünya kupasını kazandı!` )
+
+	return yillikFinalSonuc
 
 }
 
+console.log("Görev-5__", YillaraGoreKazananlar(fifaData, Finaller, Yillar, Kazananlar));
 
 /*  Görev 6: 
 	Bir higher order fonksiyonu olan `OrtalamaGolSayisi` isimli fonksiyona aşağıdakileri uygulayın: 
