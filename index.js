@@ -58,7 +58,7 @@ function Finaller(data) {
 
 }
 
-console.log("Görev-2__", Finaller(fifaData));
+//console.log("Görev-2__", Finaller(fifaData));
 
 
 /*  Görev 3: 
@@ -84,13 +84,19 @@ console.log("Görev-3__", Yillar(fifaData, Finaller));
 	💡 İPUCU: Beraberlikler(ties) için şimdilik endişelenmeyin (Detaylı bilgi için README dosyasına bakabilirsiniz.)
 	4. Tüm kazanan ülkelerin isimlerini içeren `kazananlar` adında bir dizi(array) döndürecek(return)  */
 
-function Kazananlar(/* kodlar buraya */) {
+function Kazananlar(data, cbFinaller) {
 
-	/* kodlar buraya */
+	let finallerTest = cbFinaller(data);
+
+	const kazananlarDizisi = finallerTest.map(x => x['Home Team Goals'] > x['Away Team Goals'] ? x['Home Team Name'] : x['Away Team Name'] )
+	
+	
+
+	return kazananlarDizisi
 
 }
 
-
+console.log("Görev-4__", Kazananlar(fifaData, Finaller));
 
 /*  Görev 5: 
 	Bir higher-order fonksiyonu olan YillaraGoreKazananlar isimli fonksiyona aşağıdakileri uygulayın:
@@ -103,7 +109,7 @@ function Kazananlar(/* kodlar buraya */) {
 	💡 İPUCU: her cümlenin adım 4'te belirtilen cümleyle birebir aynı olması gerekmektedir.
 */
 
-function YillaraGoreKazananlar(/* kodlar buraya */) {
+function YillaraGoreKazananlar(data, cbFinaller, cbYillar, cbKazananlar) {
 
 	/* kodlar buraya */
 
